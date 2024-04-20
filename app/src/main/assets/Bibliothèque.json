@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "image": "@drawable/image1",
+    "titre": "Le Petit Prince",
+    "auteur": "Antoine de Saint-Exupéry",
+    "catégorie": "Conte philosophique",
+    "nombre_de_pages": 96,
+    "description": "Un conte poétique et philosophique sur l'amitié, la solitude et la recherche du bonheur.",
+    "emplacement": {
+      "rayon": "Littérature française",
+      "armoire": "A1",
+      "etagere": "E2"
+    }
+  },
+  {
+    "id": "2",
+    "image": "@drawable/image2",
+    "titre": "1984",
+    "auteur": "George Orwell",
+    "catégorie": "Science-fiction",
+    "nombre_de_pages": 328,
+    "description": "Un roman dystopique qui explore les thèmes de la surveillance, du contrôle et de la liberté individuelle.",
+    "emplacement": {
+      "rayon": "Science-fiction",
+      "armoire": "B3",
+      "etagere": "E5"
+    }
+  },
+  {
+    "id": "3",
+    "image": "@drawable/image3",
+    "titre": "Le Seigneur des Anneaux",
+    "auteur": "J.R.R. Tolkien",
+    "catégorie": "Fantasy",
+    "nombre_de_pages": 1216,
+    "description": "Une épopée fantastique qui suit la quête de l'Anneau Unique et les aventures de ses porteurs.",
+    "emplacement": {
+      "rayon": "Fantasy",
+      "armoire": "C2",
+      "etagere": "E1"
+    }
+  }
+]
