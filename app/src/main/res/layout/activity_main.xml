@@ -21,7 +21,6 @@
             android:fontFamily="More Fonts..."
             android:gravity="center"
             android:padding="30dp"
-            android:text="Bibliothèque de Siwar et Soulaima"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -39,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="Rechercher un titre"
+                android:textColorHint="@color/gris"
                 android:inputType="text" />
 
             <Spinner

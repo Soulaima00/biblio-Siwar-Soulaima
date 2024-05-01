@@ -34,6 +34,7 @@
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="8dp"
         android:hint="Email"
+        android:textColorHint="@color/gris"
         android:padding="8dp"
         android:textColor="@color/vert"/>
 
@@ -46,6 +47,7 @@
         android:drawablePadding="8dp"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColorHint="@color/gris"
         android:padding="8dp"
         android:textColor="@color/vert" />
     <EditText
@@ -57,23 +59,25 @@
         android:drawablePadding="8dp"
         android:hint="Confirm Password"
         android:inputType="textPassword"
+        android:textColorHint="@color/gris"
         android:padding="8dp"
         android:textColor="@color/vert" />
     <Button
         android:id="@+id/signupButton"
-        android:layout_width="300dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="45dp"
         android:backgroundTint="@color/vert"
-        android:text="Login"
+        android:text="Signup"
+        android:textColor="@color/white"
         android:textSize="18dp"
         app:cornerRadius="0dp" />
     <TextView
         android:id="@+id/loginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="95dp"
+        android:layout_marginLeft="75dp"
         android:padding="15dp"
         android:text="Already an user ? Login"
         android:textAlignment="center"
