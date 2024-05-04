@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "livres")
 public class LivreEntity {
     @PrimaryKey(autoGenerate = true)
-    private int id;
-    private String image;
-    private String titre;
+    private final int id;
+    private final String image;
+    private final String titre;
 
     public String getImage() {
         return image;
@@ -42,24 +42,20 @@ public class LivreEntity {
         return auteur;
     }
 
-    public int getNombreDePages() {
-        return nombreDePages;
-    }
 
     public int getId() {
         return id;
     }
 
-    private String categorie;
-    private String description;
-    private String rayon;
-    private String armoire;
-    private String etagere;
-    private String auteur;
-    private int nombreDePages;
+    private final String categorie;
+    private final String description;
+    private final String rayon;
+    private final String armoire;
+    private final String etagere;
+    private final String auteur;
 
     public LivreEntity(int id, String image, String titre, String categorie, String description,
-                       String rayon, String armoire, String etagere, String auteur, int nombreDePages) {
+                       String rayon, String armoire, String etagere, String auteur) {
         this.id = id;
         this.image = image;
         this.titre = titre;
@@ -69,6 +65,5 @@ public class LivreEntity {
         this.armoire = armoire;
         this.etagere = etagere;
         this.auteur = auteur;
-        this.nombreDePages = nombreDePages;
     }
 }

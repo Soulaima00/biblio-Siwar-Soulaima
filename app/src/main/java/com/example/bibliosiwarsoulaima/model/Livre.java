@@ -3,15 +3,10 @@ package com.example.bibliosiwarsoulaima.model;
 public class Livre {
     private int id;
 
-    public int getNombreCopie() {
-        return nombreCopie;
-    }
+    private String titre,auteur,image,categorie;
+    private String description;
+    private Emplacement emplacement;
 
-    public void setNombreCopie(int nombreCopie) {
-        this.nombreCopie = nombreCopie;
-    }
-
-    private int nombreCopie;
 
     public int getId() {
         return id;
@@ -25,9 +20,6 @@ public class Livre {
         return categorie;
     }
 
-    public int getNombreDePages() {
-        return nombreDePages;
-    }
 
     public String getDescription() {
         return description;
@@ -37,10 +29,6 @@ public class Livre {
         return emplacement;
     }
 
-    private String titre,auteur,image,categorie;
-    private int nombreDePages;
-    private String description;
-    private Emplacement emplacement;
     public class Emplacement {
         private String rayon;
         private String armoire;

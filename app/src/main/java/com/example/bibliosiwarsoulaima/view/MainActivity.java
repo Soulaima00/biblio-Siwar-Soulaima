@@ -23,10 +23,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        livresList = controller.listerLivres(this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        livreAdapter = new LivreAdapter(livresList, this);
-        recyclerView.setAdapter(livreAdapter);
+        if (controller != null) {
+            livresList=controller.ajouterLivresALaBase(this);
+
+            if (livresList != null) {
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                livreAdapter = new LivreAdapter(livresList, this);
+                recyclerView.setAdapter(livreAdapter);
+            }
+        }
     }
     void init(){
         controller=Controller.getInstance();

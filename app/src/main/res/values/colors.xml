@@ -3,4 +3,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="vert">#4C7C61</color>
+    <color name="beige">#D6A863</color>
+    <color name="beigeFonce">#BD7C18</color>
+    <color name="marron">#653E03</color>
+    <color name="gris">#615D55</color>
+    <color name="mar">#7C573C</color>
+    <color name="marron2">#DFBE9A</color>
+    <color name="beige2">#D1AB7D</color>
+
 </resources>

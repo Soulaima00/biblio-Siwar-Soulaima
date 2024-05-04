@@ -34,7 +34,7 @@ public class login extends AppCompatActivity {
                 else{
                     Boolean checkCredentials = databaseHelper.checkEmailPassword(email, password);
 
-                    if(checkCredentials == true){
+                    if(checkCredentials){
                         Toast.makeText(login.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                         Intent intent  = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(intent);
@@ -48,7 +48,7 @@ public class login extends AppCompatActivity {
         binding.signupText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(login.this, signup.class);
+                Intent intent = new Intent(login.this, Signup.class);
                 startActivity(intent);
             }
         });

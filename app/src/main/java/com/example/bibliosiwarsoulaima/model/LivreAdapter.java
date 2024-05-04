@@ -17,8 +17,8 @@ import java.util.List;
 
 public class LivreAdapter extends RecyclerView.Adapter<LivreAdapter.LivreViewHolder> {
 
-    private List<Livre> livresList;
-    private Context context;
+    private final List<Livre> livresList;
+    private final Context context;
 
     public LivreAdapter(List<Livre> livresList, Context context) {
         this.livresList = livresList;
@@ -67,9 +67,9 @@ public class LivreAdapter extends RecyclerView.Adapter<LivreAdapter.LivreViewHol
                 intent.putExtra("LIVRE_AUTEUR", livre.getAuteur());
                 intent.putExtra("LIVRE_CATEGORIE", livre.getCategorie());
                 intent.putExtra("LIVRE_IMAGE", livre.getImage());
-                intent.putExtra("LIVRE_NBREPAGE", livre.getNombreDePages());
-                intent.putExtra("LIVRE_NBRECOPIE", livre.getNombreCopie());
-                intent.putExtra("LIVRE_EMPLACEMENT", livre.getEmplacement().toString());
+                intent.putExtra("LIVRE_EMPLACEMENTRAYON", livre.getEmplacement().getRayon());
+                intent.putExtra("LIVRE_EMPLACEMENTARMOIRE", livre.getEmplacement().getArmoire());
+                intent.putExtra("LIVRE_EMPLACEMENTETAGERE", livre.getEmplacement().getEtagere());
                 intent.putExtra("LIVRE_DESCRIPTION", livre.getDescription());
 
                 context.startActivity(intent);

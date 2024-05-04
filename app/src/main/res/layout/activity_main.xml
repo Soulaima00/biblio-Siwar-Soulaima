@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity"
-    android:background="@drawable/imarr">
+    >
 
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="177dp"
-        android:background="@drawable/arriereplan2"
-        android:orientation="vertical">
+        android:layout_height="160dp"
+        android:orientation="vertical"
+        android:background="@color/mar">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
-            android:layout_height="128dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
-            android:fontFamily="More Fonts..."
             android:gravity="center"
             android:padding="30dp"
             android:text="Bibliothèque de Siwar et Soulaima"
             android:textColor="@color/black"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textSize="20sp"
+            android:textStyle="bold"
 
+            android:shadowRadius="10"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,11 +36,17 @@
 
             <EditText
                 android:id="@+id/edit_text_search"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:hint="Rechercher un titre"
-                android:inputType="text" />
+                android:textColor="@color/marron"
+                android:textColorHint="@color/marron"
+                android:inputType="text"
+                android:drawableStart="@drawable/ic_search"
+                android:shadowColor="@color/black"
+                android:background="@drawable/shapeovale"
+                android:elevation="5dp"/>
 
             <Spinner
                 android:id="@+id/spinner_category"
@@ -48,6 +55,11 @@
         </LinearLayout>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/demi_cercle"
+        android:layout_below="@id/linear" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -56,5 +68,7 @@
         android:padding="8dp"
         android:clipToPadding="false"
         android:layout_below="@id/linear"/>
+
+
 
 </RelativeLayout>

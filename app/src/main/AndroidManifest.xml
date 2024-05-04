@@ -13,18 +13,25 @@
         android:theme="@style/Theme.BiblioSiwarSoulaima"
         tools:targetApi="31">
         <activity
+            android:name=".view.Emplacement_Activity"
+            android:exported="false" />
+        <activity
             android:name=".view.MainActivity"
-            android:exported="false">
+            android:exported="false"
+            >
         </activity>
-        <activity android:name=".view.DetailLivreActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".view.DetailLivreActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <activity
-            android:name=".view.signup"
+            android:name=".view.Signup"
             android:exported="false" />
-        <activity
+             <activity
             android:name=".view.login"
             android:exported="true">
             <intent-filter>
