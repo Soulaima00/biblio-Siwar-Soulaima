@@ -6,12 +6,13 @@
     tools:context=".view.MainActivity"
     android:background="@drawable/imarr">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="177dp"
         android:background="@drawable/arriereplan2"
         android:orientation="vertical">
+
 
         <TextView
             android:id="@+id/title"
@@ -24,6 +25,18 @@
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_settings"
+            android:drawableStart="@drawable/ic_settings"
+            android:layout_marginLeft="350dp"
+            android:layout_marginTop="10dp"
+            android:paddingStart="8dp"
+            android:onClick="openSettingsActivity" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
