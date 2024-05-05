@@ -7,12 +7,13 @@
     tools:context=".view.MainActivity"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:orientation="vertical"
         android:background="@color/mar">
+
 
         <TextView
             android:id="@+id/title"
@@ -21,12 +22,23 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:padding="30dp"
-            android:text="Bibliothèque de Siwar et Soulaima"
+            android:text="biblio Siwar_Soulaima"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-
             android:shadowRadius="10"/>
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_settings"
+            android:drawableStart="@drawable/ic_settings"
+            android:layout_marginLeft="350dp"
+            android:layout_marginTop="10dp"
+            android:paddingStart="8dp"
+            android:onClick="openSettingsActivity"
+            android:background="@color/mar"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,22 +65,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/demi_cercle"
         android:layout_below="@id/linear" />
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linear">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
-        android:clipToPadding="false"
-        android:layout_below="@id/linear"/>
-
+        android:clipToPadding="false"/>
+    </ScrollView>
 
 
 </RelativeLayout>

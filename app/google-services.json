@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "781030353778",
+    "project_id": "biblio-8bfa6",
+    "storage_bucket": "biblio-8bfa6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:781030353778:android:437b611f8c0f00b5b10beb",
+        "android_client_info": {
+          "package_name": "com.example.bibliosiwarsoulaima"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfEts6shwtK5X8_3mWPiN8dJFsscKdK6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

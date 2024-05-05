@@ -6,10 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/book"
-    tools:context=".view.Signup"
-    android:layout_gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="24dp">
+    tools:context=".view.RegisterActivity">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,6 +45,7 @@
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="8dp"
         android:hint="Email"
+        android:textColorHint="@color/gris"
         android:padding="8dp"
         android:textColor="@color/mar"/>
 
@@ -62,6 +60,7 @@
         android:drawablePadding="8dp"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColorHint="@color/gris"
         android:padding="8dp"
         android:textColor="@color/mar" />
 

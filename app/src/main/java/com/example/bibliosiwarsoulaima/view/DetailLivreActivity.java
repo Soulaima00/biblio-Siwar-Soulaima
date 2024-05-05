@@ -20,7 +20,7 @@ public class DetailLivreActivity extends AppCompatActivity {
     private TextView titreTextView,auteurTextView, categorieTextView, emplacementTextView;
     private TextView descriptionTextView,descrTextView;
     private ImageView imageView;
-    private Button btnempalcement;
+    private Button btnempalcement, btnRetour;
     private String livreId ;
     private String titre,auteur,categorie,image,description;
     private static final int REQUEST_CODE_EMPLACEMENT = 100;
@@ -57,6 +57,15 @@ public class DetailLivreActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(DetailLivreActivity.this, Emplacement_Activity.class);
                     startActivityForResult(intent,REQUEST_CODE_EMPLACEMENT);
+                    finish();
+                }
+            });
+            btnRetour.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(DetailLivreActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             });
 
@@ -74,6 +83,7 @@ public class DetailLivreActivity extends AppCompatActivity {
         descriptionTextView = findViewById(R.id.description_detail);
         descrTextView = findViewById(R.id.desc);
         btnempalcement = findViewById(R.id.btnemplacement);
+        btnRetour = findViewById(R.id.btnRetour);
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

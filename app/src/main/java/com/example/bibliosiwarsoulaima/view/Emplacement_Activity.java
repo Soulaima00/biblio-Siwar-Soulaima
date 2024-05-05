@@ -13,7 +13,7 @@ import com.example.bibliosiwarsoulaima.R;
 
 public class Emplacement_Activity extends AppCompatActivity {
     EditText etrayon,etarmoire,etetagere;
-    Button btnSubmiter;
+    Button btnSubmiter,btnRetour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,6 @@ public class Emplacement_Activity extends AppCompatActivity {
                 if (rayon.isEmpty() || armoire.isEmpty() || etagere.isEmpty()) {
                     Toast.makeText(Emplacement_Activity.this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
                 } else {
-                    // Créez l'intent et passez les données à DetailLivreActivity
                     Intent resultIntent = new Intent(Emplacement_Activity.this, DetailLivreActivity.class);
                     resultIntent.putExtra("RAYON_RESULT", rayon);
                     resultIntent.putExtra("ARMOIRE_RESULT", armoire);
@@ -39,7 +38,14 @@ public class Emplacement_Activity extends AppCompatActivity {
                 }
             }
         });
-
+        btnRetour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Emplacement_Activity.this, DetailLivreActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
     void init(){
@@ -47,5 +53,6 @@ public class Emplacement_Activity extends AppCompatActivity {
         etarmoire=findViewById(R.id.etarmoire);
         etetagere=findViewById(R.id.etetagere);
         btnSubmiter=findViewById(R.id.btnsubmit);
+        btnRetour = findViewById(R.id.btnRetour);
     }
 }

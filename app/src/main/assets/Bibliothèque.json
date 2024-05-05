@@ -1,6 +1,21 @@
 [
   {
     "id": "1",
+    "image": "@drawable/images",
+    "titre": "في قلبي أنثى عبرية",
+    "auteur": "خولة حمدي",
+    "catégorie": "رواية رومانسية",
+    "nombre_de_pages": 774,
+    "description": "رواية رومانسية تروي قصة حب ملتهبة بين رجل عربي وامرأة عبرية في ظل التحديات السياسية والاجتماعية.",
+    "emplacement": {
+      "rayon": "رومانسية",
+      "armoire": "D3",
+      "etagere": "E8"
+    }
+  },
+
+  {
+    "id": "2",
     "image": "@drawable/image1",
     "titre": "Le Petit Prince",
     "auteur": "Antoine de Saint-Exupéry",
@@ -14,7 +29,7 @@
     }
   },
   {
-    "id": "2",
+    "id": "3",
     "image": "@drawable/image2",
     "titre": "1984",
     "auteur": "George Orwell",
@@ -28,7 +43,7 @@
     }
   },
   {
-    "id": "3",
+    "id": "4",
     "image": "@drawable/image3",
     "titre": "Le Seigneur des Anneaux",
     "auteur": "J.R.R. Tolkien",
@@ -39,6 +54,64 @@
       "rayon": "Fantasy",
       "armoire": "C2",
       "etagere": "E1"
+    }
+  },
+
+  {
+    "id": "5",
+    "image": "@drawable/download",
+    "titre": "الليالي البيضاء",
+    "auteur": "فيودور دوستويفسكي",
+    "catégorie": "رواية رومانسية",
+    "nombre_de_pages": 224,
+    "description": "رواية رومانسية تروي قصة حب متجددة في مدينة سانت بطرسبرغ، حيث يلتقي البطل بفتاة غامضة في ليالي الصيف البيضاء.",
+    "emplacement": {
+      "rayon": "رومانسية",
+      "armoire": "D1",
+      "etagere": "E9"
+    }
+  },
+  {
+    "id": "6",
+    "image": "@drawable/harrypotter",
+    "titre": "Harry Potter à l'école des sorciers",
+    "auteur": "J.K. Rowling",
+    "catégorie": "Fantasy",
+    "nombre_de_pages": 336,
+    "description": "Le premier livre de la série Harry Potter, qui raconte l'histoire du jeune sorcier Harry et ses aventures à l'école de sorcellerie Poudlard.",
+    "emplacement": {
+      "rayon": "Fantasy",
+      "armoire": "C1",
+      "etagere": "E3"
+    }
+  },
+  {
+    "id": "7",
+    "image": "@drawable/miserable",
+    "titre": "Les Misérables",
+    "auteur": "Victor Hugo",
+    "catégorie": "Roman historique",
+    "nombre_de_pages": 1488,
+    "description": "Un roman monumental sur la misère et la rédemption, situé dans la France du 19ème siècle.",
+    "emplacement": {
+      "rayon": "Littérature française",
+      "armoire": "A2",
+      "etagere": "E4"
+    }
+  },
+
+  {
+    "id": "8",
+    "image": "@drawable/crime_and_punishment",
+    "titre": "رواية الجريمة والعقاب",
+    "auteur": "فيودور دوستويفسكي",
+    "catégorie": "رواية أدبية",
+    "nombre_de_pages": 576,
+    "description": "رواية تدور حول الشاب الفقير روديون راسكولينيكوف الذي يرتكب جريمة قتل ويواجه عواقب فكرية ونفسية وأخلاقية لفعلته، وتستكشف الرواية موضوعات مثل الجريمة والعقاب والحب والتوبة والتغيير الشخصي.",
+    "emplacement": {
+      "rayon": "أدب عالمي",
+      "armoire": "A5",
+      "etagere": "E3"
     }
   }
 ]
