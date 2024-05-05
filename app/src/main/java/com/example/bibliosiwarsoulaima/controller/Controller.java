@@ -4,15 +4,15 @@ import android.content.Context;
 
 import com.example.bibliosiwarsoulaima.model.JsonDataLoader;
 import com.example.bibliosiwarsoulaima.model.Livre;
+import com.example.bibliosiwarsoulaima.model.LivreDBHelper;
 import com.example.bibliosiwarsoulaima.model.LivreDao;
-import com.example.bibliosiwarsoulaima.model.LivreDataBase;
 import com.example.bibliosiwarsoulaima.model.LivreEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-
+    public static LivreDao livreDao;
     private static Controller instance =null;
     private Controller(){
         super();
@@ -24,30 +24,43 @@ public class Controller {
         return instance;
 
     }
-    public List<Livre> listerLivres(Context context){
-         JsonDataLoader jsdata = new JsonDataLoader(context);
-         return jsdata.chargerLivresDepuisJson();
-    }
-    public void ajouterLivresALaBase(Context context){
-        List<Livre> livresList=listerLivres(context);
-        LivreDataBase livreDatabase = LivreDataBase.getInstance(context);
-        LivreDao livreDao = livreDatabase.livreDao();
+
+    public List<Livre> ajouterLivresALaBase(Context context) {
+        JsonDataLoader jsdata = new JsonDataLoader(context);
+        List<Livre> livresList=jsdata.chargerLivresDepuisJson();
 
         // Transformez les objets Livre en LivreEntity pour la base de données
         List<LivreEntity> livreEntities = new ArrayList<>();
         for (Livre livre : livresList) {
-            LivreEntity livreEntity = new LivreEntity(livre.getId(),livre.getImage(),livre.getTitre(),
-                    livre.getCategorie(),livre.getDescription(),livre.getEmplacement().getRayon(),
-                    livre.getEmplacement().getArmoire(),livre.getEmplacement().getEtagere(),livre.getAuteur(),
-                    livre.getNombreDePages());
-            // Remplissez les champs de l'entité à partir de l'objet Livre
+            LivreEntity livreEntity = new LivreEntity(livre.getId(), livre.getImage(), livre.getTitre(),
+                    livre.getCategorie(), livre.getDescription(), livre.getEmplacement().getRayon(),
+                    livre.getEmplacement().getArmoire(), livre.getEmplacement().getEtagere(), livre.getAuteur());
             livreEntities.add(livreEntity);
         }
-
-        // Insérez les livres dans la base de données
-        livreDao.insererLivres(livreEntities);
-
-        // Maintenant, vous pouvez utiliser les données stockées dans la base de données Room
+        if (livreDao == null) {
+            livreDao = new LivreDao(context);
+        }
+        if (livreDao != null) {
+            livreDao.insererLivres(livreEntities);
+        }
+        return livresList;
     }
+    public void supprimerLivreDeLaBase(int id){
+        if (livreDao != null) {
+            livreDao.supprimerlivre(id);
+        }
+    }
+
+    public void ajouterLivreALaBase(LivreEntity livre) {
+        if (livreDao != null) {
+            livreDao.insererLivre(livre);
+        }
+    }
+    public void modifierEmplacementLivre(int idLivre, String nouveauRayon, String nouvelleArmoire, String nouvelleEtagere) {
+        // Mettre à jour l'emplacement du livre dans la base de données locale
+        livreDao.modifierEmplacementLivre(idLivre, nouveauRayon, nouvelleArmoire, nouvelleEtagere);
+    }
+
+
 }
 

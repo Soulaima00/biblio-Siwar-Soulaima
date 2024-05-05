@@ -13,16 +13,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bibliosiwarsoulaima.R;
 import com.example.bibliosiwarsoulaima.view.DetailLivreActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LivreAdapter extends RecyclerView.Adapter<LivreAdapter.LivreViewHolder> {
 
     private List<Livre> livresList;
+    private List<Livre> filteredList;
     private Context context;
 
     public LivreAdapter(List<Livre> livresList, Context context) {
         this.livresList = livresList;
+        this.filteredList = new ArrayList<>(livresList);
         this.context = context;
+    }
+    public void filterList(List<Livre> filteredList) {
+        this.filteredList = filteredList;
+        notifyDataSetChanged();
+    }
+    public void restoreList() {
+        filteredList.clear();
+        filteredList.addAll(livresList);
+        notifyDataSetChanged();
     }
 
     public static class LivreViewHolder extends RecyclerView.ViewHolder {
@@ -51,7 +63,7 @@ public class LivreAdapter extends RecyclerView.Adapter<LivreAdapter.LivreViewHol
 
     @Override
     public void onBindViewHolder(@NonNull LivreViewHolder holder, int position) {
-        Livre livre = livresList.get(position);
+        Livre livre = filteredList.get(position);
         holder.imageLivre.setImageResource(context.getResources().getIdentifier(
                 livre.getImage(), "drawable", context.getPackageName()));
         holder.titreLivre.setText(livre.getTitre());
@@ -67,9 +79,9 @@ public class LivreAdapter extends RecyclerView.Adapter<LivreAdapter.LivreViewHol
                 intent.putExtra("LIVRE_AUTEUR", livre.getAuteur());
                 intent.putExtra("LIVRE_CATEGORIE", livre.getCategorie());
                 intent.putExtra("LIVRE_IMAGE", livre.getImage());
-                intent.putExtra("LIVRE_NBREPAGE", livre.getNombreDePages());
-                intent.putExtra("LIVRE_NBRECOPIE", livre.getNombreCopie());
-                intent.putExtra("LIVRE_EMPLACEMENT", livre.getEmplacement().toString());
+                intent.putExtra("LIVRE_EMPLACEMENTRAYON", livre.getEmplacement().getRayon());
+                intent.putExtra("LIVRE_EMPLACEMENTARMOIRE", livre.getEmplacement().getArmoire());
+                intent.putExtra("LIVRE_EMPLACEMENTETAGERE", livre.getEmplacement().getEtagere());
                 intent.putExtra("LIVRE_DESCRIPTION", livre.getDescription());
 
                 context.startActivity(intent);
@@ -79,7 +91,7 @@ public class LivreAdapter extends RecyclerView.Adapter<LivreAdapter.LivreViewHol
 
     @Override
     public int getItemCount() {
-        return livresList.size();
+        return filteredList.size();
     }
 }
 

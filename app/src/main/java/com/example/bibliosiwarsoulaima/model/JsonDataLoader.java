@@ -2,7 +2,6 @@ package com.example.bibliosiwarsoulaima.model;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import android.content.Context;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
@@ -10,10 +9,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class JsonDataLoader {
-    private Context context;
+    private final Context context;
 
     public JsonDataLoader(Context context) {
         this.context = context;

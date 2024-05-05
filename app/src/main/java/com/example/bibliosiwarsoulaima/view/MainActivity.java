@@ -16,17 +16,24 @@ import android.content.Intent;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private EditText edit_text_search;
     private Controller controller;
     private RecyclerView recyclerView;
     private LivreAdapter livreAdapter;
     private List<Livre> livresList;
+    private List<Livre> filteredList;
     FirebaseAuth mAuth;
     FirebaseUser user;
     private Button btnSettings;
@@ -39,10 +46,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        livresList = controller.listerLivres(this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        livreAdapter = new LivreAdapter(livresList, this);
-        recyclerView.setAdapter(livreAdapter);
+        edit_text_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Ne rien faire ici
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String query = s.toString().toLowerCase().trim();
+                if (query.isEmpty()) {
+                    livreAdapter.restoreList(); // Restaurer la liste complète si le filtre est vide
+                } else {
+                    filterLivres(query);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Ne rien faire ici
+            }
+        });
+        if (controller != null) {
+            livresList=controller.ajouterLivresALaBase(this);
+
+            if (livresList != null) {
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                livreAdapter = new LivreAdapter(livresList, this);
+                recyclerView.setAdapter(livreAdapter);
+            }
+        }
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         if(user == null){
@@ -59,6 +92,18 @@ public class MainActivity extends AppCompatActivity {
     void init(){
         controller=Controller.getInstance();
         recyclerView = findViewById(R.id.recycler_view);
+        edit_text_search=findViewById(R.id.edit_text_search);
+        filteredList = new ArrayList<>();
 
     }
+    private void filterLivres(String query) {
+        filteredList.clear();
+        for (Livre livre : livresList) {
+            if (livre.getTitre().toLowerCase().contains(query)) {
+                filteredList.add(livre);
+            }
+        }
+        livreAdapter.filterList(filteredList);
+    }
+
 }
