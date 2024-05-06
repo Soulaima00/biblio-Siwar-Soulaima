@@ -23,6 +23,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private List<Livre> filteredList;
     FirebaseAuth mAuth;
     FirebaseUser user;
-    private Button btnSettings;
 
+    Button log_out_button;
 
     @SuppressLint("MissingInflatedId")
 
@@ -84,6 +91,16 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
+        log_out_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext() , LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
     public void openSettingsActivity(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
@@ -94,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         edit_text_search=findViewById(R.id.edit_text_search);
         filteredList = new ArrayList<>();
+        log_out_button = findViewById(R.id.log_out_button);
+
 
     }
     private void filterLivres(String query) {
@@ -105,5 +124,9 @@ public class MainActivity extends AppCompatActivity {
         }
         livreAdapter.filterList(filteredList);
     }
+
+
+
+
 
 }
