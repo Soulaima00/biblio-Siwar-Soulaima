@@ -1,6 +1,5 @@
 [
   {
-    "id": "1",
     "image": "@drawable/images",
     "titre": "في قلبي أنثى عبرية",
     "auteur": "خولة حمدي",
@@ -15,7 +14,6 @@
   },
 
   {
-    "id": "2",
     "image": "@drawable/image1",
     "titre": "Le Petit Prince",
     "auteur": "Antoine de Saint-Exupéry",
@@ -29,7 +27,6 @@
     }
   },
   {
-    "id": "3",
     "image": "@drawable/image2",
     "titre": "1984",
     "auteur": "George Orwell",
@@ -43,7 +40,6 @@
     }
   },
   {
-    "id": "4",
     "image": "@drawable/image3",
     "titre": "Le Seigneur des Anneaux",
     "auteur": "J.R.R. Tolkien",
@@ -58,7 +54,6 @@
   },
 
   {
-    "id": "5",
     "image": "@drawable/download",
     "titre": "الليالي البيضاء",
     "auteur": "فيودور دوستويفسكي",
@@ -72,7 +67,6 @@
     }
   },
   {
-    "id": "6",
     "image": "@drawable/harrypotter",
     "titre": "Harry Potter à l'école des sorciers",
     "auteur": "J.K. Rowling",
@@ -86,7 +80,6 @@
     }
   },
   {
-    "id": "7",
     "image": "@drawable/miserable",
     "titre": "Les Misérables",
     "auteur": "Victor Hugo",
@@ -101,7 +94,6 @@
   },
 
   {
-    "id": "8",
     "image": "@drawable/crime_and_punishment",
     "titre": "رواية الجريمة والعقاب",
     "auteur": "فيودور دوستويفسكي",

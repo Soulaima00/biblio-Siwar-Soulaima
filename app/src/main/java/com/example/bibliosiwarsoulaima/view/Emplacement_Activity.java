@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.bibliosiwarsoulaima.R;
+import com.example.bibliosiwarsoulaima.controller.Controller;
 
 public class Emplacement_Activity extends AppCompatActivity {
     EditText etrayon,etarmoire,etetagere;
@@ -20,6 +21,8 @@ public class Emplacement_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emplacement);
         init();
+        Intent intent = getIntent();
+        String livreId = intent.getStringExtra("LIVRE_ID");
         btnSubmiter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,6 +36,9 @@ public class Emplacement_Activity extends AppCompatActivity {
                     resultIntent.putExtra("RAYON_RESULT", rayon);
                     resultIntent.putExtra("ARMOIRE_RESULT", armoire);
                     resultIntent.putExtra("ETAGERE_RESULT", etagere);
+                    if (livreId != null) {
+                        resultIntent.putExtra("LIVRE_ID", livreId);
+                    }
                     setResult(RESULT_OK, resultIntent);
                     finish();
                 }
@@ -41,8 +47,6 @@ public class Emplacement_Activity extends AppCompatActivity {
         btnRetour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Emplacement_Activity.this, DetailLivreActivity.class);
-                startActivity(intent);
                 finish();
             }
         });

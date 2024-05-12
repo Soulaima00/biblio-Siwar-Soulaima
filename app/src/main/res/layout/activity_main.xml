@@ -60,10 +60,6 @@
                 android:background="@drawable/shapeovale"
                 android:elevation="5dp"/>
 
-            <Spinner
-                android:id="@+id/spinner_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
         </LinearLayout>
     </RelativeLayout>
 

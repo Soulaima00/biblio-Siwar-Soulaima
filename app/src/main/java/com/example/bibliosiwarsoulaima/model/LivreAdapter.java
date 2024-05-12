@@ -2,12 +2,14 @@ package com.example.bibliosiwarsoulaima.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bibliosiwarsoulaima.R;
@@ -21,6 +23,7 @@ public class LivreAdapter extends RecyclerView.Adapter<LivreAdapter.LivreViewHol
     private List<Livre> livresList;
     private List<Livre> filteredList;
     private Context context;
+    private static final int REQUEST_CODE_DETAIL_LIVRE = 100;
 
     public LivreAdapter(List<Livre> livresList, Context context) {
         this.livresList = livresList;
@@ -31,11 +34,21 @@ public class LivreAdapter extends RecyclerView.Adapter<LivreAdapter.LivreViewHol
         this.filteredList = filteredList;
         notifyDataSetChanged();
     }
+
+    public void setLivresList(List<Livre> livresList) {
+        this.livresList = livresList;
+    }
+
+    public void setFilteredList(List<Livre> filteredList) {
+        this.filteredList = filteredList;
+    }
+
     public void restoreList() {
         filteredList.clear();
         filteredList.addAll(livresList);
         notifyDataSetChanged();
     }
+
 
     public static class LivreViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageLivre;
@@ -72,19 +85,18 @@ public class LivreAdapter extends RecyclerView.Adapter<LivreAdapter.LivreViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int livreId=livre.getId();
                 Intent intent = new Intent(context, DetailLivreActivity.class);
-                // Passer les données du livre à l'activité de détail
-                intent.putExtra("LIVRE_ID", livre.getId()); // Supposons que getId() retourne l'ID du livre
+                intent.putExtra("LIVRE_ID", String.valueOf(livreId));
                 intent.putExtra("LIVRE_TITRE", livre.getTitre());
                 intent.putExtra("LIVRE_AUTEUR", livre.getAuteur());
                 intent.putExtra("LIVRE_CATEGORIE", livre.getCategorie());
                 intent.putExtra("LIVRE_IMAGE", livre.getImage());
-                intent.putExtra("LIVRE_EMPLACEMENTRAYON", livre.getEmplacement().getRayon());
-                intent.putExtra("LIVRE_EMPLACEMENTARMOIRE", livre.getEmplacement().getArmoire());
-                intent.putExtra("LIVRE_EMPLACEMENTETAGERE", livre.getEmplacement().getEtagere());
+                intent.putExtra("LIVRE_EMPLACEMENTRAYON", livre.getRayon());
+                intent.putExtra("LIVRE_EMPLACEMENTARMOIRE", livre.getArmoire());
+                intent.putExtra("LIVRE_EMPLACEMENTETAGERE", livre.getEtagere());
                 intent.putExtra("LIVRE_DESCRIPTION", livre.getDescription());
-
-                context.startActivity(intent);
+                ((AppCompatActivity) context).startActivityForResult(intent, REQUEST_CODE_DETAIL_LIVRE);
             }
         });
     }

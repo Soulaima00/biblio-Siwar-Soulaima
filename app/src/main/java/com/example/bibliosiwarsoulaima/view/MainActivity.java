@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.bibliosiwarsoulaima.R;
@@ -22,6 +23,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser user;
     private Button btnSettings;
 
+    private static final int REQUEST_CODE_DETAIL_LIVRE = 100;
 
     @SuppressLint("MissingInflatedId")
 
@@ -68,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         if (controller != null) {
-            livresList=controller.ajouterLivresALaBase(this);
+            livresList=controller.recupererLivres();
 
             if (livresList != null) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -86,11 +89,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void openSettingsActivity(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
+        mAuth.signOut();
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
     void init(){
-        controller=Controller.getInstance();
+        controller=Controller.getInstance(this);
         recyclerView = findViewById(R.id.recycler_view);
         edit_text_search=findViewById(R.id.edit_text_search);
         filteredList = new ArrayList<>();
@@ -104,6 +109,19 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         livreAdapter.filterList(filteredList);
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_DETAIL_LIVRE && resultCode == RESULT_OK) {
+            String nouveauRayon = data.getStringExtra("RAYON_RESULT");
+            String nouvelleArmoire = data.getStringExtra("ARMOIRE_RESULT");
+            String nouvelleEtagere = data.getStringExtra("ETAGERE_RESULT");
+            String livreId = data.getStringExtra("LIVRE_ID");
+            Livre livre =controller.recupererLivre(Integer.parseInt(livreId));
+            controller.modifierEmplacement(livre,nouveauRayon,nouvelleArmoire,nouvelleEtagere);
+            livreAdapter.setLivresList(controller.recupererLivres());
+        }
     }
 
 }
